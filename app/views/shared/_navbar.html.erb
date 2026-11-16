@@ -1,0 +1,31 @@
+ <nav class="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+      <%= link_to "🎬 Filmster", root_path, class: "text-2xl font-bold text-gray-900" %>
+
+      <div class="flex items-center gap-4">
+
+        <% if session[:user_id] %>
+          <% current_user = User.find_by(id: session[:user_id]) %>
+
+          <% if current_user %>
+            <span class="text-gray-700">
+               <%= current_user.name.capitalize %>
+            </span>
+
+            <%= link_to "Profile", user_path(current_user), class: "text-gray-600 hover:text-black" %>
+
+            <%= button_to "Logout", logout_path, method: :delete,
+                class: "bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer" %>
+          <% end %>
+
+        <% else %>
+          <%= link_to "Login", login_path, class: "text-gray-600 hover:text-black" %>
+
+          <%= link_to "Sign Up", signup_path,
+              class: "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" %>
+        <% end %>
+
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,21 @@
+<div class="mx-auto max-w-7xl px-6 py-8">
+  <div class="mb-6 flex items-center justify-between">
+    <h1 class="text-3xl font-bold text-gray-900">Search Results</h1>
+
+    <%= link_to "← Back to Home", root_path, class: "rounded-lg bg-gray-900 px-5
+    py-2.5 text-sm font-semibold text-white transition hover:bg-gray-700" %>
+  </div>
+
+  <% if @movies.any? %>
+
+  <div class="grid grid-cols-4 gap-4 mt-10">
+    <% @movies.each do |movie| %> <%= render "movie_card", movie: movie %> <%
+    end %>
+  </div>
+
+  <% else %>
+
+  <p class="text-gray-500">No movies found.</p>
+
+  <% end %>
+</div>

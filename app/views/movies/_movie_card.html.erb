@@ -1,0 +1,20 @@
+<%= link_to movie_path(movie), class: "block h-full" do %>
+  <div class="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-xl">
+
+    <% if movie.poster_url.present? %>
+      <%= image_tag movie.poster_url,
+          class: "aspect-[2/3] w-full object-cover" %>
+    <% else %>
+      <div class="flex aspect-[2/3] w-full items-center justify-center bg-gray-200">
+        <span class="text-gray-500">No Poster Available</span>
+      </div>
+    <% end %>
+
+    <div class="flex min-h-[72px] flex-1 items-center justify-center p-4 text-center">
+      <h2 class="line-clamp-2 text-lg font-bold text-gray-900">
+        <%= movie.title %>
+      </h2>
+    </div>
+
+  </div>
+<% end %>
